@@ -71,10 +71,27 @@ A full-stack drone operations dashboard that integrates five trained fire-detect
 - **Python** 3.10+
 - **Node.js** 18+
 - **npm** 9+
+- **Git LFS** — required to download model weights and the demo video
+
+Install Git LFS once before cloning:
+
+```bash
+git lfs install
+```
+
+Download Git LFS at [git-lfs.com](https://git-lfs.com) if you don't have it.
 
 ---
 
 ## Installation
+
+### Clone the repository
+
+```bash
+git lfs install   # skip if already done
+git clone https://github.com/blondigemini/TRGBDroneSystem.git
+cd TRGBDroneSystem
+```
 
 ### Backend Setup
 
@@ -130,12 +147,13 @@ The Vite dev server proxies all `/api/*` requests and the `/ws` WebSocket connec
 
 ## Model Placement
 
-The backend looks for trained model weights in `backend/models/`. Place your files as follows:
+Model weights are stored via Git LFS and downloaded automatically when you clone the repo. No manual placement needed.
 
 ```
 backend/
+├── yolo11n.pt                  ← downloaded via LFS
 └── models/
-    ├── model1_cnn.h5
+    ├── model1_cnn.h5           ← downloaded via LFS
     ├── model2_efficientnet.keras
     ├── model3_thermal.keras
     ├── model4_yolo.pt
@@ -239,7 +257,7 @@ TRGBDroneSystem/
 │   ├── security.py           # HMAC-SHA256 per-frame verification
 │   ├── config.py             # Paths, WS interval, drone mode
 │   ├── requirements.txt
-│   ├── models/               # Model weights (not tracked by git)
+│   ├── models/               # Model weights (tracked via Git LFS)
 │   ├── routers/
 │   │   ├── alerts.py
 │   │   ├── drone.py
