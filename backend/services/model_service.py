@@ -31,7 +31,8 @@ class ModelService:
     def _load_yolo(self):
         try:
             from ultralytics import YOLO
-            self.yolo_model = YOLO("yolo11n.pt")
+            yolo_path = Path(__file__).resolve().parent.parent / "yolo11n.pt"
+            self.yolo_model = YOLO(str(yolo_path))
             logger.info("YOLOv11n loaded.")
         except ImportError:
             logger.warning("ultralytics not installed — YOLO disabled. Run: pip install ultralytics")

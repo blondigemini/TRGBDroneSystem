@@ -20,18 +20,11 @@ __pycache__/
 .env.*
 *.env
 
-# ── Model weights (large binary files) ───────────────────────────────────────
-*.h5
-*.keras
-*.pt
-*.pth
-*.ckpt
+# ── Model weights & media — tracked via Git LFS, not ignored ─────────────────
 *.pkl
-backend/models/
+*.ckpt
 
-# ── Media ─────────────────────────────────────────────────────────────────────
-frontend/public/feed.mp4
-*.mp4
+# ── Media (non-LFS) ───────────────────────────────────────────────────────────
 *.avi
 
 # ── OS / IDE ──────────────────────────────────────────────────────────────────
