@@ -1,9 +1,46 @@
+# ── Dependencies ──────────────────────────────────────────────────────────────
 node_modules/
-dist/
-__pycache__/
-*.pyc
-.env
 .venv/
 venv/
+env/
+
+# ── Build outputs ─────────────────────────────────────────────────────────────
+dist/
+build/
+*.egg-info/
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ── Environment / secrets ─────────────────────────────────────────────────────
+.env
+.env.*
+*.env
+
+# ── Model weights (large binary files) ───────────────────────────────────────
 *.h5
+*.keras
+*.pt
+*.pth
+*.ckpt
+*.pkl
+backend/models/
+
+# ── Media ─────────────────────────────────────────────────────────────────────
+frontend/public/feed.mp4
+*.mp4
+*.avi
+
+# ── OS / IDE ──────────────────────────────────────────────────────────────────
+desktop.ini
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# ── Claude Code ───────────────────────────────────────────────────────────────
 .claude/

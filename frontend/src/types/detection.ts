@@ -1,3 +1,7 @@
+// types/detection.ts
+// Shared detection types used by the live feed and WebSocket layer.
+// The API-specific types (ModelResult, YoloResult, etc.) live in api/detection.ts.
+
 export interface BoundingBox {
   x: number;
   y: number;

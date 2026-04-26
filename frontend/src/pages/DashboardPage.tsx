@@ -8,6 +8,7 @@ import { AlertPanel } from "../components/alerts/AlertPanel";
 import { StatusBar } from "../components/status/StatusBar";
 import { MissionControl } from "../components/mission/MissionControl";
 import { useDashboardStore } from "../stores/dashboardStore";
+import { DetectionPanel } from "../components/detection/DetectionPanel";
 
 interface Props {
   telemetry: DroneTelemetry | null;
@@ -52,6 +53,7 @@ export function DashboardPage({
           flightPath={flightPath}
           hotspots={hotspots}
         />
+        <DetectionPanel />
       </div>
 
       {/* Right column */}

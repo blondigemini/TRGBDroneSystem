@@ -9,7 +9,7 @@ export function MissionControl() {
   const setActiveMission = useDashboardStore((s) => s.setActiveMission);
 
   const [name, setName] = useState("");
-  const [area, setArea] = useState("");
+  const [area, setArea] = useState("Lusail, Lusail");
   const [cameraMode, setCameraMode] = useState("thermal");
 
   const activeMission = missions.find((m) => m.status === "active");

@@ -1,0 +1,22 @@
+name: cnn_env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - numpy>=1.26
+  - pandas>=2.0
+  - matplotlib>=3.8
+  - seaborn>=0.13
+  - scikit-learn>=1.4
+  - opencv>=4.8
+  - pillow>=10.4
+  - jupyter
+  - ipykernel
+  - tqdm
+  - pip:
+      - tensorflow>=2.15.0
+      - keras>=3.0.0
+      - ultralytics>=8.1.0
+      - tensorflow-metal  # Apple Silicon only — remove on Windows/Linux

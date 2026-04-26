@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
-import { LayoutDashboard, Navigation } from "lucide-react";
+import { LayoutDashboard, Navigation, Flame } from "lucide-react";
 import { clsx } from "clsx";
 
 const links = [
   { to: "/", icon: LayoutDashboard, label: "Dashboard" },
   { to: "/missions", icon: Navigation, label: "Missions" },
+  { to: "/thermal-tool", icon: Flame, label: "Thermal" },
 ];
 
 export function Sidebar() {

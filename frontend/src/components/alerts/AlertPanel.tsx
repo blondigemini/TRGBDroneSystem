@@ -15,25 +15,9 @@ export function AlertPanel({ alerts }: Props) {
   const audioEnabled = useDashboardStore((s) => s.audioEnabled);
   const prevCountRef = useRef(alerts.length);
 
-  // Play sound on new critical alert
   useEffect(() => {
-    if (alerts.length > prevCountRef.current && audioEnabled) {
-      const latest = alerts[0];
-      if (latest?.severity === "critical") {
-        const ctx = new AudioContext();
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.frequency.value = 880;
-        osc.type = "square";
-        gain.gain.value = 0.1;
-        osc.start();
-        osc.stop(ctx.currentTime + 0.15);
-      }
-    }
     prevCountRef.current = alerts.length;
-  }, [alerts, audioEnabled]);
+  }, [alerts]);
 
   const handleAck = async (id: string) => {
     try {

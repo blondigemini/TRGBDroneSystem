@@ -15,6 +15,10 @@
   --color-success: #22c55e;
 }
 
+html {
+  font-size: 87.5%;
+}
+
 body {
   margin: 0;
   background: var(--color-bg-primary);
