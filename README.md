@@ -2,7 +2,7 @@
 
 **AI-Powered Fire Detection & Post-Fire Clearance Dashboard**
 
-A full-stack drone operations dashboard that integrates five trained fire-detection models (CNN, EfficientNetB0, YOLOv11n, and a dual-branch Fusion model) with a real-time monitoring interface. Designed for post-fire clearance missions — the system ingests live drone imagery, runs inference, generates HMAC-verified security assessments, and streams results to operators via WebSocket.
+A full-stack drone operations dashboard that integrates five trained fire-detection models (CNN, EfficientNetB0, YOLOv11n, and a dual-branch Fusion model) with a real-time monitoring interface. Designed for post-fire clearance missions — the system ingests live drone imagery, runs inference, and streams results to operators via WebSocket.
 
 ---
 
@@ -32,7 +32,6 @@ A full-stack drone operations dashboard that integrates five trained fire-detect
 | Backend   | FastAPI + Uvicorn |
 | ML Models | TensorFlow/Keras + Ultralytics YOLOv11n |
 | Real-time | WebSocket (`/ws/feed`) |
-| Security  | HMAC-SHA256 per-frame signature verification |
 | State     | Zustand + TanStack Query |
 | Map       | Leaflet (Lusail, Qatar base coordinates) |
 
@@ -177,8 +176,6 @@ If a model file is missing the backend falls back to **mock mode** for that mode
 | `POST` | `/predict/model5` | Dual Fusion — `rgb_file` + `nir_file`, threshold 0.2468 |
 | `POST` | `/predict/all` | Models 1–3 in parallel on a single image |
 
-**Optional security field:** pass `signature=<hmac-sha256-hex>` as a form field alongside any image to enable per-frame tamper detection.
-
 ### Tools
 
 | Method | Endpoint | Description |
@@ -216,12 +213,7 @@ Response:
   "probability": 0.87,
   "threshold": 0.35,
   "confidence": "High",
-  "prediction_time_ms": 142.5,
-  "security": {
-    "status": "UNSIGNED",
-    "frame_hash": "a3f9...",
-    "tamper_event": null
-  }
+  "prediction_time_ms": 142.5
 }
 ```
 
@@ -254,7 +246,6 @@ Upload an RGB image, convert it to pseudo-thermal grayscale, and run it through 
 TRGBDroneSystem/
 ├── backend/
 │   ├── main.py               # FastAPI app — 5 model endpoints, RGB-to-thermal tool
-│   ├── security.py           # HMAC-SHA256 per-frame verification
 │   ├── config.py             # Paths, WS interval, drone mode
 │   ├── requirements.txt
 │   ├── models/               # Model weights (tracked via Git LFS)
